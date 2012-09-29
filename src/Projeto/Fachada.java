@@ -58,25 +58,18 @@ public class Fachada {
 	}
 
 	public List<Artigo> pesquisarPorAutor(String autor) {
-		if (autor == null) {
-			throw new GerenciadorDeArtigosException("Escreva o nome do autor");
-		}
-
+		
 		return gerenteUsuarios.pesquisarPorAutor(autor);
 
 	}
 
 	public List<Artigo> pesquisarArtigoPorTitulo(String titulo) {
-		if (titulo == null) {
-			throw new GerenciadorDeArtigosException("Escreva o nome do titulo");
-		}
+		
 		return gerenteUsuarios.pesquisarArtigoPorTitulo(titulo);
 	}
 
 	public List<Artigo> pesquisarArtigoPorPalavra(String palavra) {
-		if (palavra == null) {
-			throw new GerenciadorDeArtigosException("Escreva o nome da palavra");
-		}
+	
 		return gerenteUsuarios.pesquisarArtigoPorPalavra(palavra);
 	}
 
@@ -161,8 +154,4 @@ public class Fachada {
 		return gerenteArtigos.pesquisarArtigosCompartilhadosPorPalavra(palavra);
 	}
 
-	public List<Artigo> listarArtigosCompartilhados() {
-		return gerenteArtigos.getTodosArtigosCompartilhados();
 	}
-
-}

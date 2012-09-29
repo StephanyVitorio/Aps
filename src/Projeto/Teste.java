@@ -196,7 +196,7 @@ public class Teste {
 		fachada.aprovarCadastoUsuario(u);
 		fachada.login(u.login, u.senha);
 		
-		artigos=fachada.listarArtigosCompartilhados();
+		artigos=fachada.pesquisarMateriaisCompartilhados();
 		int size = artigos.size();
 		Assert.assertEquals(1, size);
 	}
@@ -325,11 +325,12 @@ public class Teste {
 
 		Administrador a = criarAdministradorPadrao();
 		fachada.cadastrarAdministrador(a);
-		fachada.cadastrarAdministrador(a);
-
+				
 		List<Administrador> admin = fachada.listarAdminitradores();
 		Administrador aCadastrado = admin.get(0);
 		Assert.assertEquals(aCadastrado,a);
+		
+		fachada.cadastrarAdministrador(a);		
 	}
 
 	@Test(expected = GerenciadorDeArtigosException.class)
@@ -449,7 +450,7 @@ public class Teste {
 	}
 
 	@Test(expected = GerenciadorDeArtigosException.class)
-	public void loginUsuarioJaExistente() {
+	public void cadastroUsuarioJaExistente() {
 
 		criaCadastraElogaAdministrador();
 
@@ -471,14 +472,14 @@ public class Teste {
 		Artigo ar = criarArtigoPadrao1();
 		fachada.adicionarArtigo(ar);
 
-		List<Artigo> artigos = fachada.listarArtigosCompartilhados();
+		List<Artigo> artigos = fachada.pesquisarMateriaisCompartilhados();
 		fachada.compartilharMaterial(ar);
-		fachada.listarArtigosCompartilhados();
+		fachada.pesquisarMateriaisCompartilhados();
 		int size = artigos.size();
 		Assert.assertEquals(1, size);
 
 		fachada.removerArtigoCompartilhado(ar);
-		artigos = fachada.listarArtigosCompartilhados();
+		artigos = fachada.pesquisarMateriaisCompartilhados();
 		int size1 = artigos.size();
 		Assert.assertEquals(0, size1);
 	}

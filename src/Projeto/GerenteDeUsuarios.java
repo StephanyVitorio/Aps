@@ -87,18 +87,25 @@ public class GerenteDeUsuarios {
 
 	public List<Artigo> pesquisarPorAutor(String autor) {
 		List<Artigo> artigoPorAutor = new LinkedList<Artigo>();
-
+		if (autor == null) {
+			throw new GerenciadorDeArtigosException("Escreva o nome do autor");
+		}
 		for (int i = 0; i < usuarioLogado.getArtigos().size(); i++) {
 			if (usuarioLogado.getArtigos().get(i).getNome().contains(autor)) {
 				artigoPorAutor.add(usuarioLogado.getArtigos().get(i));
 			}
 		}
+		
 		return artigoPorAutor;
+		
 	}
 
 	public List<Artigo> pesquisarArtigoPorPalavra(String palavra) {
 
 		List<Artigo> artigoPorPalavra = new LinkedList<Artigo>();
+		if (palavra == null) {
+			throw new GerenciadorDeArtigosException("Escreva o nome da palavra");
+		}
 		for (int i = 0; i < usuarioLogado.getArtigos().size(); i++) {
 			if (usuarioLogado.getArtigos().get(i).getResumo().contains(palavra)) {
 				artigoPorPalavra.add(usuarioLogado.getArtigos().get(i));
@@ -109,6 +116,9 @@ public class GerenteDeUsuarios {
 
 	public List<Artigo> pesquisarArtigoPorTitulo(String titulo) {
 		List<Artigo> artigoPorTitulo = new LinkedList<Artigo>();
+		if (titulo == null) {
+			throw new GerenciadorDeArtigosException("Escreva o nome do titulo");
+		}
 		for (int i = 0; i < usuarioLogado.getArtigos().size(); i++) {
 			if (usuarioLogado.getArtigos().get(i).getTitulo().contains(titulo)) {
 				artigoPorTitulo.add(usuarioLogado.getArtigos().get(i));
